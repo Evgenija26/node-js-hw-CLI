@@ -1,0 +1,25 @@
+{
+  "name": "n0de-js-hw-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evgenija26/node-js-hw-CLi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evgenija26/node-js-hw-CLi/issues"
+  },
+  "homepage": "https://github.com/Evgenija26/node-js-hw-CLi#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
