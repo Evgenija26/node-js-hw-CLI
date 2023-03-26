@@ -1,17 +1,17 @@
 const fs = require ("fs/promises");
 const path = require("path");
 
-const contactsRath = path.join(__dirname, "./contacts.json")
+const contactsPath = path.join(__dirname, "./contacts.json")
 
 const listContacts = async() =>{
-    const data = await fs.readFile(contactsRath, "utf-8");
+    const data = await fs.readFile(contactsPath, "utf-8");
     const contacts = JSON.parse(data);
     console.log("List of contacts: ");
     console.table(contacts);
 }
 
 const getContactById = async(id) =>{
-    const data = await fs.readFile(contactsRath, "utf-8");
+    const data = await fs.readFile(contactsPath, "utf-8");
     const contacts = JSON.parse(data);
 
     const contact = contacts.find(item => item.id === id);
@@ -22,7 +22,7 @@ const getContactById = async(id) =>{
 }
 
 const addContact = async (name, email, phone) => {
-    const data = await fs.readFile(contactsRath, "utf-8");
+    const data = await fs.readFile(contactsPath, "utf-8");
     const contacts = JSON.parse(data);
     contacts.push({
         id: contacts.length + 1,
@@ -37,7 +37,7 @@ const addContact = async (name, email, phone) => {
 }
 
 const removeContact = async (contactId) => {
-    const data = await fs.readFile(contactsRath, "utf-8");
+    const data = await fs.readFile(contactsPath, "utf-8");
     const contacts = JSON.parse(data);
 
     const newContact = contacts.filter((contact) => contact.id !== contactId);
@@ -45,10 +45,26 @@ const removeContact = async (contactId) => {
     console.table(newContact);
 
 }
+const updateContact = async (id, data) => {
+  const contactsId = String(id);
+  console.log(contactsId)
+//   const data = await fs.readFile(contactsPath, "utf-8");
+// const contacts = JSON.parse(data);
+  const contacts = await listContacts();
+  const index = contacts.find(item => item.id === contactsId);
+  if (index === -1){
+    return null;
+  }
+
+  contacts [index] = {id, ...data};
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+  return contacts [index]
+}
 
 module.exports = {
     listContacts,
     getContactById,
     addContact,
-    removeContact
+    removeContact,
+    updateContact
 }
