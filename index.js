@@ -28,8 +28,8 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 }
 
-invokeAction ({action: "list"});
-invokeAction ({action: "get", id: "5"});
-invokeAction ({action: "add", name: "Mango", email: "mango@gmail.com", phone: "322-22-22"});
-invokeAction ({action: "remove", id: "3"});
-// invokeAction ({action: "updateById", id: "2", email: "appl@gmail.com", phone: "666-87-98"});
+// invokeAction ({action: "list"});
+// invokeAction ({action: "get", id: "5"});
+// invokeAction ({action: "add", name: "Mango", email: "mango@gmail.com", phone: "322-22-22"});
+// invokeAction ({action: "remove", id: "3"});
+// invokeAction ({action: "updateById", id: "2",name: "Chaim Lewis", email: "appl@gmail.com", phone: "666-87-98"});
